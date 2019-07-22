@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>殷笑天的主页</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+<div id="yy">
+    <div class="bg" v-bind:id="bg1">
+        <p>hello zoujiemeng, i am yinxiaotian!
+            {{msg}}
+        </p>
+    </div>
+    我是数字{{count}}, 加一运算后={{count + 1}}
+    <div v-html="template">
+    </div>
+    <a v-bind:href="url">去到百度</a>
+    <a :href="url1">去到幕客</a>
+    <button type="button" v-on:click="submit()">点击加1</button>
+    <button type="button" @click="submit()">点击也加1</button>
+    <p>{{msg1}}</p>
+
+    <div v-if="count > 0">
+        count大于0
+    </div>
+    <div v-else-if="count < 0">
+        count小于0
+    </div>
+    <div v-else>
+        count等于0
+    </div>
+
+    <div v-show="count == 0">{{count}}</div>
+
+    <hr/>
+    <div v-for="item in dataList">
+        {{item}}
+        <div v-if="item.age > 25" :style="styles">
+            {{item.age}}岁好老哦！
+        </div>
+        <div v-else :class="vueClass">
+            {{item.age}}岁好年轻哦～
+        </div>
+    </div>
+</div>
+
+<script>
+    var vue = new Vue({
+        el: "#yy",
+        data: {
+            bg1: "kk",
+            msg: "nice to meet you!",
+            another: "i am fine!",
+            styles: {
+                color: 'red',
+                'text-shadow': '0 0 10px green'
+            },
+            vueClass: ['active', "show", 'one', {"pp": true}],
+            count: 10,
+            template: '<div>这个是div元素</div>',
+            url: "http://www.baidu.com",
+            url1: "http://www.imooc.com",
+            dataList: [
+                {
+                    name: "yxt",
+                    age: 26
+                },
+                {
+                    name: "zjm",
+                    age: 23
+                }]
+        },
+        methods: {
+            submit: function () {
+                this.count++
+            }
+        },
+        watch: {
+            msg: function (newval, odlval) {
+                console.log("旧值=" + odlval)
+                console.log("新值=" + newval)
+            }
+        },
+        computed: {
+            msg1: function () {
+                return this.msg + this.another
+            }
+        }
+    })
+</script>
+</body>
+</html>

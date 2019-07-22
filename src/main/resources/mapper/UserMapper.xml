@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yinxt.promotion.project.blog.mapper.UserMapper">
+
+    <resultMap id="userInfoResultMap" type="com.yinxt.promotion.project.blog.model.UserModel">
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="gender" property="gender"/>
+        <result column="age" property="age"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+    </resultMap>
+
+    <select id="selectUsersInfo" resultMap="userInfoResultMap">
+        select *
+        from tb_user
+    </select>
+
+    <insert id="insertUserInfo" parameterType="com.yinxt.promotion.project.blog.model.UserModel">
+        insert into tb_user
+        (user_id, user_name, gender, age, birthday, phone, address)
+        values (
+        #{userId,jdbcType=VARCHAR},
+        #{userName,jdbcType=VARCHAR},
+        #{gender,jdbcType=INTEGER},
+        #{age,jdbcType=INTEGER},
+        #{birthday, jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},
+        #{address,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="updateUserInfo" parameterType="com.yinxt.promotion.project.blog.model.UserModel">
+        update tb_user
+        <set>
+            <if test="userId != null and userId != ''">
+                user_id=#{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null and userName != ''">
+                user_name=#{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null and gender != ''">
+                gender=#{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null and age != ''">
+                age=#{age,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                birthday=#{birthday,jdbcType=DATE},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone=#{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null and address != ''">
+                address=#{address,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            user_id=#{userId,jdbcType=VARCHAR}
+        </where>
+    </update>
+</mapper>
