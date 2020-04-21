@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="computer" class="com.yinxt.promotion.spring.Computer">
+        <property name="name" value="苹果"/>
+        <property name="cpu" ref="cpu"/>
+        <property name="price" value="18860"/>
+    </bean>
+
+    <bean id="cpu" class="com.yinxt.promotion.spring.CPU">
+        <property name="brand" value="intel"/>
+    </bean>
+</beans>
