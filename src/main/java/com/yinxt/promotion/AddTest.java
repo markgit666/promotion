@@ -25,6 +25,7 @@ public class AddTest<E> extends ArrayList<String> implements InterTest {
 
     public AddTest() {
         c = "c";
+
     }
 
     static {
@@ -33,7 +34,7 @@ public class AddTest<E> extends ArrayList<String> implements InterTest {
 
     {
 //        c = "c";
-        b = "b";
+//        b = "b";
     }
 
     public synchronized void printNum() {
@@ -52,10 +53,10 @@ public class AddTest<E> extends ArrayList<String> implements InterTest {
 
     public static void main(String[] args) {
         InterTest interTest = new AddTest();
-//        interTest.printNum();//编译不通过
+        //interTest.printNum();//编译不通过
 
         AddTest<? extends Object> addTest1 = new AddTest();
-        //addTest1.add(3);
+//        addTest1.add(3);
         addTest1.add("s");
         //addTest1.add(2.003);
 

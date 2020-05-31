@@ -17,18 +17,18 @@ public class VolatileTest {
         Thread thread = new Thread(() -> {
             for (int i = 0; i < 5000; i++) {
                 synchronized (VolatileTest.class) {
-                    a++;
+                    a = a + 1;
                 }
             }
         });
 
         Thread thread1 = new Thread() {
             @Override
-            public void run() {
+            public synchronized void run() {
                 for (int i = 0; i < 5000; i++) {
-                    synchronized (VolatileTest.class) {
-                        a++;
-                    }
+//                    synchronized (VolatileTest.class) {
+                    a = a + 1;
+//                    }
                 }
             }
         };

@@ -28,7 +28,7 @@ public class BubbleSort {
                     int temp = dataArray[j + 1];
                     dataArray[j + 1] = dataArray[j];
                     dataArray[j] = temp;
-                    sortFlag = true ;
+                    sortFlag = true;
                 }
             }
             if (!sortFlag) {

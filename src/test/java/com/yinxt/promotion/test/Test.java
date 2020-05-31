@@ -21,20 +21,43 @@ public class Test {
         System.out.println("blockA");
     }
 
-    public static Test t1 = new Test();
+//    public static Test t1 = new Test();
+
+    public Test() {
+        log.info("执行构造方法");
+    }
 
     public static void main(String[] args) {
 
-        Test t2 = new Test();
+//        Test t2 = new Test();
+        testVarial();
     }
 
-    @org.junit.Test
-    public void testVarial() {
+    //    @org.junit.Test
+    public static void testVarial() {
         int i = 8;
         int j = i++;
         log.info("j={}", j);
         Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        log.info("输入字符：{}", str);
 
-        Map<String, String>  hashMap = new HashMap<>();
+//        String str2 = scanner.next();
+//        log.info("str2={}", str2);
+
+        String s = scanner.findInLine("sfsf");
+        log.info("find={}", s);
+
+        boolean b = scanner.hasNext();
+        log.info("b = {}", b);
+
+        while (!scanner.hasNext("#")) {
+            String next = scanner.next();
+            log.info("str={}", next);
+        }
+        log.info("end code!");
+
+
+        Map<String, String> hashMap = new HashMap<>();
     }
 }

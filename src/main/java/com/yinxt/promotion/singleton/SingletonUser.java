@@ -22,7 +22,7 @@ public class SingletonUser {
 
         private SingletonUser singletonUser;
 
-        public void SingleEnum() {
+        SingletonEnum() {
             singletonUser = new SingletonUser();
         }
 
@@ -31,7 +31,7 @@ public class SingletonUser {
         }
     }
 
-    public SingletonUser getInstance() {
+    public static SingletonUser getInstance() {
         return SingletonEnum.INSTANCE.getSingletonUser();
     }
 

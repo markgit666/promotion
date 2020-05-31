@@ -37,10 +37,13 @@ public class CloneTest {
         A fastJsonA = JSONObject.parseObject(JSONObject.toJSONString(a), A.class);
         a.getB().setName("我是更改后的B");
         log.info("fastJsonA={}", JSONObject.toJSONString(fastJsonA));
+
         //使用spring util工具类 目标对象需要实现Serializable接口
         byte[] serialize = SerializationUtils.serialize(a);
+        a.getB().setName("再改变一次");
         A serializeA = (A) SerializationUtils.deserialize(serialize);
         log.info("serializeA={}", serializeA);
+
         //BeanUtils.copyProperties不能实现深克隆
         BeanUtils.copyProperties(a, serializeA);
         a.getB().setName("B我又改变了");
